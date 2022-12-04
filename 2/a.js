@@ -1,8 +1,8 @@
 const fs = require('fs');
 
-let input = fs.readFileSync('input2.txt', 'utf8');
+let input = fs.readFileSync('input.txt', 'utf8');
 
-const split  = [];
+const split = [];
 
     input = input.split('\n')
     input.forEach((element) => {
