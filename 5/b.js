@@ -1,3 +1,4 @@
+
 const fs = require("fs");
 
 let input = fs.readFileSync("input.txt", "utf8");
@@ -29,6 +30,7 @@ for (let i = 0; i < split.length; i++) {
     instructions.push(split[i]);
   }
 }
+
 let tempArray = [];
 const execute = (twod, instructions) => {
   instructions.forEach((element) => {
