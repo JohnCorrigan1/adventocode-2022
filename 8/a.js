@@ -33,9 +33,9 @@ for(let i = 0; i < split.length; i++){
                     treesSeen.push([i,j])
                     isVisible = true;
                 }
-                else if(current === 0){
-                    isEdge = true;
-                }
+                // else if(current === 0){
+                //     isEdge = true;
+                // }
                 else if(parseInt(split[i][j]) < parseInt(split[i][current])){
                     current--
                 }
@@ -58,9 +58,9 @@ for(let i = 0; i < split.length; i++){
                     treesSeen.push([i,j])
                     isVisible = true;
                 }
-                else if(current === split[i].length - 1){
-                    isEdge = true;
-                }
+                // else if(current === split[i].length - 1){
+                //     isEdge = true;
+                // }
                 else if(parseInt(split[i][j]) < parseInt(split[i][current])){
                     current++
                 }
@@ -140,12 +140,6 @@ for(let i = 0; i < split.length; i++){
                 else if(parseInt(split[i][j]) < parseInt(split[current][j])){
                     current++
                 }
-            
-                // else if(current === split[i].length - 1){
-                //     totalTrees++
-                //     treesSeen.push([i,j])
-                //     isVisible = true;
-                // }
                 else{
                     isEdge = true;
                 }
@@ -155,6 +149,6 @@ for(let i = 0; i < split.length; i++){
 }
 }
 
-// console.log(split)
+console.log(split)
 console.log(totalTrees)
-// console.log(treesSeen)
+console.log(treesSeen)
