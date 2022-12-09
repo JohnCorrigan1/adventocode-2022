@@ -18,6 +18,7 @@ const treesSeen = [];
 for(let i = 0; i < split.length; i++){
     for(let j = 0; j < split[i].length; j++){
         isVisible = false;
+        console.log(totalTrees)
         if(i === 0 || i === split.length - 1 || j === 0 || j === split[i].length - 1){
             totalTrees++
         }
@@ -25,77 +26,68 @@ for(let i = 0; i < split.length; i++){
 
             //check left
             let isEdge = false;
-            let current = j
+            let current = j - 1
             while(!isEdge && !isVisible){
-                if(parseInt(split[i][j]) <= parseInt(split[i][current - 1])){
-                    isEdge = true;
-                }
-                else if(current === 0){
+                if(current === 0 && parseInt(split[i][j]) < parseInt(split[i][current])){
                     totalTrees++
                     treesSeen.push([i,j])
                     isVisible = true;
                 }
-                else{
+                else if(current === 0){
+                    isEdge = true;
+                }
+                else if(parseInt(split[i][j]) < parseInt(split[i][current])){
                     current--
+                }
+                // else if(current === 0){
+                //     totalTrees++
+                //     treesSeen.push([i,j])
+                //     isVisible = true;
+                // }
+                else{
+                    isEdge = true;
                 }
             }
 
             //check right
             isEdge = false;
-            current = j
+            current = j + 1
             while(!isEdge && !isVisible){
-                if(parseInt(split[i][j]) <= parseInt(split[i][current + 1])){
-                    isEdge = true;
-                }
-                else if(current === split[i].length - 1){
+                if(current === split[i].length - 1 && parseInt(split[i][j]) < parseInt(split[i][current])){
                     totalTrees++
                     treesSeen.push([i,j])
                     isVisible = true;
                 }
-                else{
+                else if(current === split[i].length - 1){
+                    isEdge = true;
+                }
+                else if(parseInt(split[i][j]) < parseInt(split[i][current])){
                     current++
                 }
+                // else if(current === 0){
+                //     totalTrees++
+                //     treesSeen.push([i,j])
+                //     isVisible = true;
+                // }
+                else{
+                    isEdge = true;
+                }
             }
-
-            //check above
             // isEdge = false;
-            // current = i
+            // current = j
             // while(!isEdge && !isVisible){
-            //     if(current === 0 && parseInt(split[i][j]) <= parseInt(split[current + 1][j])){
+            //     if(current === split[i].length - 1 && parseInt(split[i][j]) <= parseInt(split[i][current])){
             //         totalTrees++
             //         treesSeen.push([i,j])
             //         isVisible = true;
             //     }
-            //     else if(parseInt(split[i][j]) <= parseInt(split[current - 1][j])){
+            //     else if(current === split.legnth - 1){
             //         isEdge = true;
             //     }
-            //     else if(current === 0){
-            //         totalTrees++
-            //         treesSeen.push([i,j])
-            //         isVisible = true;
-            //     }
-            //     else{
-            //         current--
-            //     }
-            // }
-
-            //check below
-            // isEdge = false;
-            // current = i
-            // while(!isEdge && !isVisible){
-            //     console.log("current", current)
-            //     console.log(split[i][j])
-            //     console.log(i, j)
-            //     if(current === split.length - 1 && parseInt(split[i][j]) <= parseInt(split[current - 1][j])){
-            //         totalTrees++
-            //         treesSeen.push([i,j])
-            //         isVisible = true;
-            //     }
-            //     else if(parseInt(split[i][j]) <= parseInt(split[current + 1][j])){
-            //         isEdge = true;
-            //     }
-            
-            //     else if(current === split[i][j].length - 1){
+            //     // else if(parseInt(split[i][j]) <= parseInt(split[i][current + 1])){
+            //     //     isEdge = true;
+            //     // }
+            //     else if(current === split[i].length - 1){
             //         totalTrees++
             //         treesSeen.push([i,j])
             //         isVisible = true;
@@ -103,12 +95,66 @@ for(let i = 0; i < split.length; i++){
             //     else{
             //         current++
             //     }
+            // }
+
+            //check above
+            isEdge = false;
+            current = i - 1
+            while(!isEdge && !isVisible){
+                if(current === 0 && parseInt(split[i][j]) < parseInt(split[current][j])){
+                    totalTrees++
+                    treesSeen.push([i,j])
+                    isVisible = true;
+                }
+                else if(current === 0){
+                    isEdge = true;
+                }
+                else if(parseInt(split[i][j]) < parseInt(split[current][j])){
+                    current++
+                }
+                // else if(current === 0){
+                //     totalTrees++
+                //     treesSeen.push([i,j])
+                //     isVisible = true;
+                // }
+                else{
+                    isEdge = true;
+                }
+            }
+
+            //check below
+            isEdge = false;
+            current = i + 1
+            while(!isEdge && !isVisible){
+                // console.log("current", current)
+                // console.log(split[i][j])
+                // console.log(i, j)
+                if(current === split.length - 1 && parseInt(split[i][j]) < parseInt(split[current][j])){
+                    totalTrees++
+                    treesSeen.push([i,j])
+                    isVisible = true;
+                }
+                else if(current === split.length - 1){
+                    isEdge = true;
+                }
+                else if(parseInt(split[i][j]) < parseInt(split[current][j])){
+                    current++
+                }
+            
+                // else if(current === split[i].length - 1){
+                //     totalTrees++
+                //     treesSeen.push([i,j])
+                //     isVisible = true;
+                // }
+                else{
+                    isEdge = true;
+                }
             }
             
     }
 }
+}
 
-
-console.log(split)
+// console.log(split)
 console.log(totalTrees)
-console.log(treesSeen)
+// console.log(treesSeen)
